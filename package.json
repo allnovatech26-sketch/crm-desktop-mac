@@ -1,0 +1,98 @@
+{
+  "name": "allnovatech-crm-desktop",
+  "productName": "ALLNOVATECH CRM",
+  "version": "0.1.18",
+  "description": "ALLNOVATECH CRM Desktop — tu oficina es tu nube",
+  "author": "ALLNOVATECH",
+  "private": true,
+  "main": "src/main/index.js",
+  "scripts": {
+    "stage:postgres": "node scripts/stage-postgres.js",
+    "build:frontend": "cd ../frontend && npx ng build --configuration desktop",
+    "stage:app": "node scripts/stage-app.js",
+    "poc:postgres": "node scripts/poc-postgres.js",
+    "start": "electron .",
+    "pack": "npm run build:frontend && npm run stage:app && electron-builder --win --dir",
+    "dist": "npm run build:frontend && npm run stage:app && electron-builder --win nsis",
+    "make:icon": "electron scripts/make-icon.js",
+    "test": "node --test test/backup-format.test.js test/license-agent.test.js test/equipo.test.js test/meta-conexion.test.js test/updater-mac.test.js",
+    "test:respaldos": "node scripts/test-respaldos.js",
+    "autoprueba": "electron . --autoprueba"
+  },
+  "devDependencies": {
+    "electron": "33.4.11",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "pe.allnovatech.crm.desktop",
+    "productName": "ALLNOVATECH CRM",
+    "copyright": "© ALLNOVATECH",
+    "directories": {
+      "output": "dist-installer"
+    },
+    "files": [
+      "src/**/*",
+      "package.json",
+      "assets/**/*",
+      "!src/main/autoprueba.js"
+    ],
+    "asar": true,
+    "extraResources": [
+      {
+        "from": "build/stage/backend",
+        "to": "backend"
+      },
+      {
+        "from": "build/stage/frontend",
+        "to": "frontend"
+      },
+      {
+        "from": "build/stage/node",
+        "to": "node"
+      },
+      {
+        "from": "resources/pgsql",
+        "to": "pgsql"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "ALLNOVATECH-CRM-Desktop-Setup-${version}.${ext}",
+      "signAndEditExecutable": false,
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ALLNOVATECH CRM",
+      "deleteAppDataOnUninstall": false,
+      "language": "3082",
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerHeaderIcon": "assets/icon.ico"
+    },
+    "afterPack": "./scripts/after-pack.js",
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://all-novatech.com/descargas/crmdesktop",
+        "channel": "latest"
+      }
+    ]
+  },
+  "dependencies": {
+    "electron-updater": "^6.3.9",
+    "ws": "8.18.0"
+  }
+}

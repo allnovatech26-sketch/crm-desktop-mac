@@ -1,0 +1,27 @@
+:root { color-scheme: light dark; --fondo: #ffffff; --texto: #1f2937; --suave: #6b7280; --borde: #e5e7eb; --marca: #09B768; --marca-osc: #067a46; --error: #dc2626; --tarjeta: #f9fafb; }
+@media (prefers-color-scheme: dark) { :root { --fondo: #111827; --texto: #e5e7eb; --suave: #9ca3af; --borde: #374151; --tarjeta: #1f2937; --marca-osc: #34d399; --error: #f87171; } }
+html, body { height: 100%; margin: 0; }
+body { display: grid; place-items: center; font-family: "Segoe UI", system-ui, sans-serif; background: var(--fondo); color: var(--texto); }
+.caja { width: min(560px, calc(100% - 32px)); }
+h1 { font-size: 22px; margin: 0 0 6px; text-align: center; }
+.sub { text-align: center; color: var(--suave); margin: 0 0 20px; font-size: 14px; }
+.opciones { display: grid; gap: 12px; }
+.opcion { text-align: left; padding: 16px; border: 1px solid var(--borde); border-radius: 10px; background: var(--tarjeta); color: inherit; font: inherit; cursor: pointer; }
+.opcion:hover, .opcion:focus-visible { border-color: var(--marca); outline: none; }
+.opcion strong { display: block; font-size: 15px; margin-bottom: 4px; }
+.opcion span { font-size: 13px; color: var(--suave); }
+form { display: grid; gap: 12px; }
+label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
+input { font: inherit; font-weight: 400; padding: 9px 10px; border: 1px solid var(--borde); border-radius: 8px; background: var(--fondo); color: inherit; }
+input:focus { outline: 2px solid var(--marca); outline-offset: 0; }
+.acciones { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
+button { font: inherit; cursor: pointer; border-radius: 8px; }
+button:disabled { opacity: .55; cursor: default; }
+.primario { padding: 9px 18px; border: none; background: var(--marca); color: #fff; font-weight: 600; }
+.secundario { padding: 9px 14px; border: 1px solid var(--borde); background: transparent; color: inherit; }
+.enlace { border: none; background: none; padding: 0; color: var(--marca-osc); text-decoration: underline; font-size: 12px; }
+.error { color: var(--error); font-size: 13px; margin: 0; }
+.detalle { font-size: 13px; color: var(--suave); text-align: center; margin: -8px 0 12px; }
+.pistas { font-size: 13px; color: var(--suave); padding-left: 18px; margin: 0 0 16px; }
+.pie { text-align: center; margin-top: 18px; }
+.progreso { text-align: center; font-size: 13px; color: var(--marca-osc); margin-top: 14px; }

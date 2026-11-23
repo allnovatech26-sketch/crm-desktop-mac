@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'">
+  <title>ALLNOVATECH CRM</title>
+  <link rel="stylesheet" href="inicio.css">
+</head>
+<body>
+  <main class="caja">
+    <h1>ALLNOVATECH CRM</h1>
+
+    <!-- Primera vez: ¿PC principal o conectarse a otra? -->
+    <section id="eleccion" hidden>
+      <p class="sub">¿Cómo usarás esta computadora?</p>
+      <div class="opciones">
+        <button type="button" class="opcion" id="btn-principal">
+          <strong>Esta es la PC principal</strong>
+          <span>Aquí se guardan los datos de la empresa. Elige esto si es tu primera instalación o si trabajas solo.</span>
+        </button>
+        <button type="button" class="opcion" id="btn-cliente">
+          <strong>Conectarme a la PC principal</strong>
+          <span>Ya tienes el CRM instalado en otra PC de esta oficina y quieres trabajar sobre los mismos datos.</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Conectar a la PC principal -->
+    <section id="conectar" hidden>
+      <p class="sub" id="sub-conectar">En la PC principal abre <b>Configuración → Trabajo en red</b> y copia su dirección y su código.</p>
+      <form id="form">
+        <label>Dirección de la PC principal
+          <input id="host" autocomplete="off" placeholder="192.168.1.20" required>
+        </label>
+        <label>Puerto
+          <input id="puerto" inputmode="numeric" autocomplete="off" value="54500" required>
+        </label>
+        <label>Código de emparejamiento
+          <input id="codigo" autocomplete="off" placeholder="A1B2-C3D4-E5F6" maxlength="20" required>
+        </label>
+        <p class="error" id="error" role="alert" hidden></p>
+        <div class="acciones">
+          <button type="button" class="secundario" id="btn-volver">Volver</button>
+          <button type="submit" class="primario" id="btn-conectar">Conectar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Cliente sin conexión con la PC principal -->
+    <section id="sin-conexion" hidden>
+      <p class="sub">No se encuentra la PC principal.</p>
+      <p class="detalle" id="detalle"></p>
+      <ul class="pistas">
+        <li>Revisa que la PC principal esté encendida y con el CRM abierto.</li>
+        <li>Ambas computadoras deben estar en la misma red (mismo Wi-Fi o router).</li>
+        <li>Si la PC principal cambió de dirección, usa «Cambiar PC principal».</li>
+      </ul>
+      <div class="acciones">
+        <button type="button" class="secundario" id="btn-cambiar">Cambiar PC principal</button>
+        <button type="button" class="primario" id="btn-reintentar">Reintentar</button>
+      </div>
+      <p class="pie"><button type="button" class="enlace" id="btn-desvincular">Dejar de usar la PC principal y usar esta PC sola</button></p>
+    </section>
+
+    <p class="progreso" id="progreso" role="status" hidden></p>
+  </main>
+  <script src="inicio.js"></script>
+</body>
+</html>

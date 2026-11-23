@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+  <title>ALLNOVATECH CRM</title>
+  <style>
+    :root { color-scheme: light dark; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: grid; place-items: center;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: #ffffff; color: #1f2937;
+    }
+    @media (prefers-color-scheme: dark) { body { background: #111827; color: #e5e7eb; } }
+    .caja { text-align: center; }
+    h1 { font-size: 20px; margin: 0 0 6px; }
+    p { margin: 0; font-size: 13px; opacity: .7; }
+    .barra { width: 220px; height: 4px; margin: 20px auto 0; border-radius: 2px; background: rgba(9, 183, 104, .2); overflow: hidden; }
+    .barra::after { content: ""; display: block; width: 40%; height: 100%; background: #09B768; animation: ir 1.2s ease-in-out infinite; }
+    @keyframes ir { from { transform: translateX(-100%); } to { transform: translateX(260%); } }
+    @media (prefers-reduced-motion: reduce) { .barra::after { animation: none; width: 100%; } }
+  </style>
+</head>
+<body>
+  <div class="caja" role="status" aria-live="polite">
+    <h1>ALLNOVATECH CRM</h1>
+    <p>Iniciando tu CRM…</p>
+    <div class="barra" aria-hidden="true"></div>
+  </div>
+</body>
+</html>

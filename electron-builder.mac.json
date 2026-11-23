@@ -1,0 +1,29 @@
+{
+  "appId": "pe.allnovatech.crm.desktop",
+  "productName": "ALLNOVATECH CRM",
+  "copyright": "© ALLNOVATECH",
+  "directories": {
+    "output": "dist-mac"
+  },
+  "files": [
+    "src/**/*",
+    "package.json",
+    "assets/**/*",
+    "!src/main/autoprueba.js"
+  ],
+  "asar": true,
+  "mac": {
+    "target": ["dir"],
+    "category": "public.app-category.business",
+    "icon": "assets/icon.png",
+    "identity": null,
+    "hardenedRuntime": false,
+    "gatekeeperAssess": false,
+    "minimumSystemVersion": "11.0",
+    "extendInfo": {
+      "NSLocalNetworkUsageDescription": "El CRM se conecta a la PC principal de tu oficina para trabajar con los mismos datos.",
+      "CFBundleDevelopmentRegion": "es"
+    }
+  },
+  "publish": null
+}

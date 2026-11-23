@@ -1,0 +1,35 @@
+ALLNOVATECH CRM para Mac: cómo armar el instalador
+====================================================
+
+Se hace una sola vez por versión, en cualquier Mac (Apple M1-M4 o Intel) con macOS 11 o más nuevo.
+Tarda unos 10 minutos. Necesita internet.
+
+1) Instala Node.js (gratis)
+   - Abre https://nodejs.org y descarga la versión «LTS» para macOS.
+   - Abre el archivo .pkg descargado y sigue los pasos (Continuar → Instalar).
+
+2) Copia esta carpeta a la Mac
+   - Pasa el archivo .zip a la Mac (USB, Google Drive, AirDrop…) y haz doble clic para descomprimirlo.
+   - Queda una carpeta llamada «crm-mac». Déjala, por ejemplo, en Descargas.
+
+3) Arma el instalador
+   - Abre la app «Terminal» (Aplicaciones → Utilidades → Terminal, o busca «Terminal» con ⌘ + espacio).
+   - Escribe «cd » (con un espacio al final), arrastra la carpeta «crm-mac» a la ventana de Terminal y pulsa Enter.
+   - Copia y pega esto y pulsa Enter:
+
+        bash scripts/armar-mac.sh
+
+   - Espera a que diga «Listo». Se abre sola la carpeta «salida-mac» con los dos instaladores:
+        ALLNOVATECH-CRM-Mac-…-arm64.dmg   (Mac con Apple M1, M2, M3 o M4)
+        ALLNOVATECH-CRM-Mac-…-x64.dmg     (Mac con Intel)
+     además de SHA512SUMS y VERSION.
+
+4) Lleva la carpeta «salida-mac» completa a la PC con Windows (USB o Drive) y avisa a Claude para publicarla en la web.
+
+Para usar el CRM en esa misma Mac
+   - Abre el .dmg que corresponde a tu Mac y arrastra «ALLNOVATECH CRM» a Aplicaciones.
+   - La primera vez, si macOS dice que no puede comprobar la app: Ajustes del Sistema → Privacidad y seguridad →
+     «Abrir de todos modos».
+   - En la PC principal (Windows): Configuración → Trabajo en red → Activar. Copia la dirección y el código.
+   - En la Mac: escribe esa dirección y ese código y pulsa Conectar. Trabajas con la misma empresa y los mismos datos.
+     Ambas deben estar en la misma red (mismo Wi-Fi o router) y el plan debe ser de 2 o más usuarios.
